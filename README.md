@@ -32,6 +32,11 @@ Installation on iPhone / iPad
 * Install the ipa in your device
 
 
+Next step
+-----------------------------
+* You can easily [convert your mySQL database into SQLite](http://blog.jembe.fr/convertir-mysql-en-sqlite-en-php/)
+* if you prefer, you can use this [tool](http://www.jembe.fr/sqlite/convertion-mysql-sqlite.php)
+
 
 
 
