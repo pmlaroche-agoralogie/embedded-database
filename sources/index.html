@@ -22,16 +22,16 @@
 <script src="js/jquery.mobile-1.0.1.min.js"></script>
 <script type="text/javascript" src="jembe.js"></script>
 
-<SCRIPT LANGUAGE="JavaScript">
+
+
+</head>
+<body>
+	<SCRIPT LANGUAGE="JavaScript">
 Today = new Date;
 Heure = Today.getHours();
 Min = Today.getMinutes();
 Message = "Il est " + Heure + "h" + Min + "m";
 </SCRIPT>
-
-</head>
-<body>
-	
 	
 	<div data-role="page" id="page1">
 		<div data-theme="a" data-role="header"><h3>jeMbe bdd 2.0 <SCRIPT LANGUAGE="JavaScript">
@@ -65,7 +65,7 @@ document.write('--'+Message);
 		var bdd = jembe.db.openDatabase({
 			dbName:'bdd_ts'
 		});
-		alert(nbInsert+' insert');
+		
 		function selectBdd() {
 			bdd.execute({
 				sql:'select count(1) as nb_lignes from perf', 
@@ -75,6 +75,7 @@ document.write('--'+Message);
 		
 		function printResult(p_content) {
 			retour = p_content;
+			alert('retour');
 			if (typeof retour!="object")
 				eval('retour = '+retour);	
 			$('#is_ready').fadeOut().fadeIn().html('<b>'+retour[0].nb_lignes+' Lines</b>');
