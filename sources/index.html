@@ -21,8 +21,20 @@
 <script src="js/jquery-1.7.1.js"></script>
 <script src="js/jquery.mobile-1.0.1.min.js"></script>
 <script type="text/javascript" src="jembe.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">
+Today = new Date;
+Heure = Today.getHours();
+Min = Today.getMinutes();
+Message = "Il est " + Heure + "h" + Min + "m";
+</SCRIPT>
+
 </head>
 <body>
+	<SCRIPT LANGUAGE="JavaScript">
+document.write(Message);
+</SCRIPT>
+	
 	<div data-role="page" id="page1">
 		<div data-theme="a" data-role="header"><h3>jeMbe bdd 2.0</h3></div>
 		<div data-role="content">
