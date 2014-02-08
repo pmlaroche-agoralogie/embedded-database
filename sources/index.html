@@ -31,12 +31,13 @@ Message = "Il est " + Heure + "h" + Min + "m";
 
 </head>
 <body>
-	<SCRIPT LANGUAGE="JavaScript">
-document.write(Message);
-</SCRIPT>
+	
 	
 	<div data-role="page" id="page1">
-		<div data-theme="a" data-role="header"><h3>jeMbe bdd 2.0</h3></div>
+		<div data-theme="a" data-role="header"><h3>jeMbe bdd 2.0 <SCRIPT LANGUAGE="JavaScript">
+document.write('--'+Message);
+</SCRIPT>
+		</h3></div>
 		<div data-role="content">
 			
 			<table width="100%" cellpadding="2" cellspacing="2" border="0" >
