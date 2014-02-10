@@ -26,17 +26,10 @@
 
 </head>
 <body>
-	<SCRIPT LANGUAGE="JavaScript">
-Today = new Date;
-Heure = Today.getHours();
-Min = Today.getMinutes();
-Message = "Il est " + Heure + "h" + Min + "m";
-</SCRIPT>
+	
 	
 	<div data-role="page" id="page1">
-		<div data-theme="a" data-role="header"><h3>jeMbe bdd 2.0 <SCRIPT LANGUAGE="JavaScript">
-document.write('--'+Message);
-</SCRIPT>
+		<div data-theme="a" data-role="header"><h3>jeMbe bdd 2.0 
 		</h3></div>
 		<div data-role="content">
 			
@@ -62,17 +55,38 @@ document.write('--'+Message);
 	<script>
 		var nbInsert=100;
 		var compteurInsert = 0;
-		var bdd = jembe.db.openDatabase({
-			dbName:'bdd_ts'
-		});
+		//var bdd = jembe.db.openDatabase({
+		//	dbName:'bdd_ts'
+		//});
 		
-		function selectBdd() {
-			bdd.execute({
-				sql:'select count(1) as nb_lignes from perf', 
-				callback: function(content) { printResult(content);}
-			});		
-		}
+		var db = jembe.db.openDatabase({
+				dbName:'bdd_ts'
+			    });
 		
+		db.execute({
+			sql:'select count(1) as nb_lignes from perf',
+			onSuccess: getList
+		    });
+		
+		
+		
+		function getList(p_content) {
+    //p_content est un object sous <a href="http://www.jembe.fr/definition-android.html" class="glossaire">android</a> mais une chaine de caractère sur <a href="http://www.jembe.fr/definition-apple-ios.html" class="glossaire">iOS</a>
+    var db_content = p_content
+    if (typeof db_content!="object")
+        eval('db_content = '+db_content);
+	alert('getlist');
+    printList(db_content);
+}
+ 
+function printList(p_db_content) {
+     for (var f=0;f<p_db_content.length;f++) {
+	alert(p_db_content[i].id+' '+p_db_content[f].timestamp);
+    console.log(p_db_content[i].id+' '+p_db_content[f].timestamp);
+    
+     }
+}
+		/*
 		function printResult(p_content) {
 			retour = p_content;
 			alert('retour');
@@ -129,7 +143,7 @@ document.write('--'+Message);
 			}
 			$('#retour_ajax_load').html(LineLoad);
 			//alert(retour.length+' Lines');
-		}
+		}*/
 	</script>
 </body>
 </html>
