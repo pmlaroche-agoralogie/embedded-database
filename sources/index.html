@@ -22,17 +22,12 @@
 <script src="js/jquery.mobile-1.0.1.min.js"></script>
 <script type="text/javascript" src="jembe.js"></script>
 
-
-
 </head>
 <body>
-	
-	
 	<div data-role="page" id="page1">
 		<div data-theme="a" data-role="header"><h3>jeMbe bdd questions d'humeurs 2.0 
 		</h3></div>
 		<div data-role="content">
-			
 			<table width="100%" cellpadding="2" cellspacing="2" border="0" >
 				
 				<tr>
@@ -71,7 +66,6 @@
 		
 		}
 		
-				
 		function getList(p_content) {
 			//p_content est un object sous <a href="http://www.jembe.fr/definition-android.html" class="glossaire">android</a> mais une chaine de caractère sur <a href="http://www.jembe.fr/definition-apple-ios.html" class="glossaire">iOS</a>
 			var db_content = p_content
@@ -83,12 +77,14 @@
 		    }
  
 		function printList(p_db_content) {
-			
+		listvaleur = '';
 		     for (var f=0;f<p_db_content.length;f++) {
-			alert(p_db_content[f].humeur+' '+p_db_content[f].timestamp);
-		    console.log(p_db_content[f].humeur+' '+p_db_content[f].timestamp);
+			listvaleur += p_db_content[f].humeur+' '+p_db_content[f].timestamp;
+			alert(p_db_content[f].humeur);
+		    //console.log(p_db_content[f].humeur+' '+p_db_content[f].timestamp);
 		    
 		     }
+		$('#retour_ajax_load').html('listvaleur');
 }
 
 		
