@@ -58,13 +58,14 @@
 		//var bdd = jembe.db.openDatabase({
 		//	dbName:'bdd_ts'
 		//});
+		//select count(1) as nb_lignes from perf
 		
 		var db = jembe.db.openDatabase({
 				dbName:'bdd_ts'
 			    });
 		
 		db.execute({
-			sql:'select count(1) as nb_lignes from perf',
+			sql:'select * from perf',
 			onSuccess: getList
 		    });
 		
