@@ -29,19 +29,15 @@
 	
 	
 	<div data-role="page" id="page1">
-		<div data-theme="a" data-role="header"><h3>jeMbe bdd 2.0 
+		<div data-theme="a" data-role="header"><h3>jeMbe bdd questions d'humeurs 2.0 
 		</h3></div>
 		<div data-role="content">
 			
 			<table width="100%" cellpadding="2" cellspacing="2" border="0" >
+				
 				<tr>
-					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="selectBdd()">Nb line in base</a><div id="is_ready"></div></td>
-				</tr>
-				<tr>
-					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="insertBdd()">Insert in base (x100)</a><div id="nb_insert"></div></td>
-				</tr>
-				<tr>
-					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="LoadBase()">Load base</a><div id="retour_ajax_load"></div></td>
+					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="LoadBase()">Affiche base</a>
+					<div id="retour_ajax_load"></div></td>
 				</tr>
 				<tr>
 					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="resetAll()">Reset All</a></td>
@@ -49,102 +45,53 @@
 			</table>
 		</div>
 		<div data-theme="a" data-role="footer">
-			<h3>copyright jeMbe 2012</h3>
+			<h3>copyright jeMbe 2012-13-14 </h3>
 		</div>
 	</div>
 	<script>
-		var nbInsert=100;
-		var compteurInsert = 0;
-		//var bdd = jembe.db.openDatabase({
-		//	dbName:'bdd_ts'
-		//});
-		//select count(1) as nb_lignes from perf
 		
 		var db = jembe.db.openDatabase({
-				dbName:'bdd_ts'
+				dbName:'bd_questions'
 			    });
 		
-		db.execute({
-			sql:'select * from perf',
-			onSuccess: getList
-		    });
-		
-		
-		
-		function getList(p_content) {
-    //p_content est un object sous <a href="http://www.jembe.fr/definition-android.html" class="glossaire">android</a> mais une chaine de caractère sur <a href="http://www.jembe.fr/definition-apple-ios.html" class="glossaire">iOS</a>
-    var db_content = p_content
-    if (typeof db_content!="object")
-        eval('db_content = '+db_content);
-	alert('getlist');
-    printList(db_content);
-}
- 
-function printList(p_db_content) {
-     for (var f=0;f<p_db_content.length;f++) {
-	alert(p_db_content[i].id+' '+p_db_content[f].timestamp);
-    console.log(p_db_content[i].id+' '+p_db_content[f].timestamp);
-    
-     }
-}
-		/*
-		function printResult(p_content) {
-			retour = p_content;
-			alert('retour');
-			if (typeof retour!="object")
-				eval('retour = '+retour);	
-			$('#is_ready').fadeOut().fadeIn().html('<b>'+retour[0].nb_lignes+' Lines</b>');
-		}
-		
-		function insertBdd() {
-			compteurInsert=0;
-			for (b=0;b<nbInsert;b++) {
-				bdd.execute({
-					sql:'insert into perf (timestamp) values ('+(new Date()).getTime()+')', 
-					callback: function(content) { resultTest(content);}
-				});
-				//$('#nb_insert').html(compteurInsert+'/'+b);
-			}
-		}
-		
-		function resultTest(p_content) {
-			compteurInsert++;
-			$('#nb_insert').html(compteurInsert+' / <b>'+nbInsert+' Lines</b>');
-			if (compteurInsert>=nbInsert) {
-				selectBdd();
-				LoadBase();
-			}
-		}
-		
 		function resetAll() {
-			compteurInsert=0;
+			
 			$('#is_ready').html('');
 			$('#nb_insert').html('');
 			$('#retour_ajax_load').html('');
-			bdd.execute({
-				sql:'DELETE from perf', 
-				callback: function(content) { alert('finish');}
-			});
+			
 		}
 		
 		function LoadBase() {
-			bdd.execute({
-				sql:'select * from perf', 
-				callback: function(content) { resultLoad(content);}
-			});
+			db.execute({
+				sql:'select * from humeur',
+				onSuccess: getList
+			    });
+		
+		
 		}
 		
-		function resultLoad(p_content) {
-			//alert('retour = '+p_content)
-			var LineLoad='';
-			retour = p_content;
-			if (typeof retour!="object") eval('retour = '+retour);	
-			for(c=0;c<retour.length;c++) {
-				LineLoad += '<div '+((c%2) ? 'style="background:#ccc;"' : '')+'><b>'+(c+1)+'</b> / '+retour[c].id+' / '+retour[c].timestamp+'</div>';
-			}
-			$('#retour_ajax_load').html(LineLoad);
-			//alert(retour.length+' Lines');
-		}*/
+				
+		function getList(p_content) {
+			//p_content est un object sous <a href="http://www.jembe.fr/definition-android.html" class="glossaire">android</a> mais une chaine de caractère sur <a href="http://www.jembe.fr/definition-apple-ios.html" class="glossaire">iOS</a>
+			var db_content = p_content
+			if (typeof db_content!="object")
+			    eval('db_content = '+db_content);
+			    alert('getlist');
+			$('#retour_ajax_load').html('zz');
+			printList(db_content);
+		    }
+ 
+		function printList(p_db_content) {
+			
+		     for (var f=0;f<p_db_content.length;f++) {
+			alert(p_db_content[f].humeur+' '+p_db_content[f].timestamp);
+		    console.log(p_db_content[f].humeur+' '+p_db_content[f].timestamp);
+		    
+		     }
+}
+
+		
 	</script>
 </body>
 </html>
