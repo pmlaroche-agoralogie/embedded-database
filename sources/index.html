@@ -31,8 +31,10 @@
 			<table width="100%" cellpadding="2" cellspacing="2" border="0" >
 				
 				<tr>
-					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="LoadBase()">Affiche base</a>
-					<div id="retour_ajax_load"></div></td>
+					<td>
+						<a data-role="button" data-transition="fade" href="javascript:" onclick="LoadBase()">Affiche base</a>
+						<div id="retour_ajax_load"></div>
+					</td>
 				</tr>
 				<tr>
 					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="resetAll()">Reset All</a></td>
@@ -61,7 +63,7 @@
 			db.execute({
 				sql:'select * from humeur',
 				onSuccess: getList
-			    });
+			});
 		
 		}
 		
@@ -74,13 +76,13 @@
 		    }
  
 		function printList(p_db_content) {
-		listvaleur = '';
-		     for (var f=0;f<p_db_content.length;f++) {
-			listvaleur += p_db_content[f].humeur+' '+p_db_content[f].timestamp;
+			listvaleur = '';
+			for (var f=0;f<p_db_content.length;f++) {
+			   listvaleur += p_db_content[f].humeur+' '+p_db_content[f].timestamp;
 		    
-		     }
-		$('#retour_ajax_load').html(listvaleur);
-}
+			}
+			$('#retour_ajax_load').html(listvaleur);
+		}
 
 		
 	</script>
