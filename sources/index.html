@@ -63,7 +63,6 @@
 				onSuccess: getList
 			    });
 		
-		
 		}
 		
 		function getList(p_content) {
@@ -71,8 +70,6 @@
 			var db_content = p_content
 			if (typeof db_content!="object")
 			    eval('db_content = '+db_content);
-			    alert('getlist');
-			$('#retour_ajax_load').html('zz');
 			printList(db_content);
 		    }
  
@@ -80,11 +77,9 @@
 		listvaleur = '';
 		     for (var f=0;f<p_db_content.length;f++) {
 			listvaleur += p_db_content[f].humeur+' '+p_db_content[f].timestamp;
-			alert(p_db_content[f].humeur);
-		    //console.log(p_db_content[f].humeur+' '+p_db_content[f].timestamp);
 		    
 		     }
-		$('#retour_ajax_load').html('listvaleur');
+		$('#retour_ajax_load').html(listvaleur);
 }
 
 		
