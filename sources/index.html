@@ -97,7 +97,7 @@
 		function printList(p_db_content) {
 			listvaleur = '';
 			for (var f=0;f<p_db_content.length;f++) {
-			   listvaleur += p_db_content[f].humeur+' '+String.p_db_content[f].ts_debut;
+			   listvaleur += p_db_content[f].humeur+'-'+p_db_content[f].ts_debut.toString();
 		    
 			}
 			$('#retour_ajax_load').html(listvaleur);
