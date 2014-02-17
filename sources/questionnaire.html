@@ -26,17 +26,31 @@
 </head>
 <body>
 	
-	document.cookie="username=John Doe";
+	
+
+
+
 	<script>
+		
+		function getCookie(name)
+{
+var nameEQ = name + "=";
+var ca = document.cookie.split(';');
+for(var i=0;i < ca.length;i++) {
+var c = ca[i].trim();
+if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+}
+return null;
+}
+
         function printValue(sliderID, textbox) {
             var x = document.getElementById(textbox);
             var y = document.getElementById(sliderID);
             x.value = y.value;
         }
 
-	function goquestion() {
-           window.location.href="/questionaire.html";
-        }
+	var fname=getCookie("username");
+alert(fname);
 	
     </script>
 	
@@ -47,7 +61,7 @@
 		</h3></div>
 		<div class="canvas_demo">
 <p>
-
+Minimum = 100, Maximum = 500, Step = 10
 </p>
 <input id="slider1" type="range" min="100" max="500" step="10" onchange="printValue('slider1','rangeValue1')">
 <input id="rangeValue1" type="text" size="2">
@@ -62,9 +76,6 @@
 						<a data-role="button" data-transition="fade" href="javascript:" onclick="LoadBase()">Affiche base</a>
 						<div id="retour_ajax_load"></div>
 					</td>
-				</tr>
-				<tr>
-					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="goquestion()">question</a></td>
 				</tr>
 				<tr>
 					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="resetAll()">Reset All</a></td>
