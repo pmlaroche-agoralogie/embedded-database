@@ -35,15 +35,8 @@
 	
 	<div data-role="page" id="page1">
 		<div data-theme="a" data-role="header">
-			<h3>Questions d'humeurs Mobile
+			<h3>Mon suivi Mobile
 		</h3></div>
-		<div class="canvas_demo">
-<p>
-
-</p>
-<input id="slider1" type="range" min="100" max="500" step="10" onchange="printValue('slider1','rangeValue1')">
-<input id="rangeValue1" type="text" size="2">
-</div>
 		
 		
 		<div data-role="content">
@@ -56,14 +49,15 @@
 					</td>
 				</tr>
 				<tr>
-					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="goquestion()">question</a></td>
+					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="questionnaire()">question</a></td>
 				</tr>
 				<tr>
 					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="resetAll()">Reset All</a></td>
 				</tr>
 				<tr>
-					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="resetAll()">RŽglage</a></td>
+					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="reglages()">RŽglage</a></td>
 				</tr>
+				
 			</table>
 		</div>
 		<div data-theme="a" data-role="footer">
@@ -103,7 +97,7 @@
 		function printList(p_db_content) {
 			listvaleur = '';
 			for (var f=0;f<p_db_content.length;f++) {
-			   listvaleur += p_db_content[f].humeur+' '+p_db_content[f].timestamp;
+			   listvaleur += p_db_content[f].humeur+' '+String.p_db_content[f].ts_debut;
 		    
 			}
 			$('#retour_ajax_load').html(listvaleur);
