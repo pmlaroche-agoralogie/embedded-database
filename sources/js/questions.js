@@ -35,16 +35,16 @@ function questionnaire(nomquestionnaire) {
     var debutquestionnaire = quelleheureestil();
     document.cookie="nomquestionnaire="+nomquestionnaire;
     document.cookie="tsdebut="+debutquestionnaire;  
-   window.location.href="/questionnaire.html";
+   window.location.href="questionnaire.html";
 }
 
 
 function reglages() {
-   window.location.href="/reglages.html";
+   window.location.href="reglages.html";
 }
 
 function validerquestions() {
-   window.location.href="/index.html";
+   window.location.href="index.html";
 }
 
 
