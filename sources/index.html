@@ -28,7 +28,8 @@
 	
 
 	<script>
-    	document.cookie="username=John Doe";  
+	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    	document.cookie="username=nouveaunom";  
 	
     </script>
 	
@@ -66,9 +67,6 @@
 	</div>
 	<script>
 		
-		var db = jembe.db.openDatabase({
-				dbName:'bd_questions'
-			    });
 		
 		function resetAll() {
 			

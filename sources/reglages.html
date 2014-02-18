@@ -31,8 +31,7 @@
 
 
 	<script>
-		
-		
+	
 
 	var fname=getCookie("username");
 alert(fname);
@@ -44,13 +43,6 @@ alert(fname);
 		<div data-theme="a" data-role="header">
 			<h3>Questions d'humeurs Mobile
 		</h3></div>
-		<div class="canvas_demo">
-<p>
-Minimum = 100, Maximum = 500, Step = 10
-</p>
-<input id="slider1" type="range" min="100" max="500" step="10" onchange="printValue('slider1','rangeValue1')">
-<input id="rangeValue1" type="text" size="2">
-</div>
 		
 		
 		<div data-role="content">
@@ -58,7 +50,7 @@ Minimum = 100, Maximum = 500, Step = 10
 				
 				<tr>
 					<td>
-						<a data-role="button" data-transition="fade" href="javascript:" onclick="LoadBase()">Affiche base</a>
+						<a data-role="button" data-transition="fade" href="javascript:" onclick="chercheid()">Affiche base</a>
 						<div id="retour_ajax_load"></div>
 					</td>
 				</tr>
@@ -75,46 +67,7 @@ Minimum = 100, Maximum = 500, Step = 10
 		</div>
 	</div>
 	<script>
-		
-		var db = jembe.db.openDatabase({
-				dbName:'bd_questions'
-			    });
-		
-		function resetAll() {
-			
-			$('#is_ready').html('');
-			$('#nb_insert').html('');
-			$('#retour_ajax_load').html('');
-			
-		}
-		
-		function LoadBase() {
-			db.execute({
-				sql:'select * from humeur',
-				onSuccess: getList
-			});
-		
-		}
-		
-		function getList(p_content) {
-			//p_content est un object sous <a href="http://www.jembe.fr/definition-android.html" class="glossaire">android</a> mais une chaine de caractère sur <a href="http://www.jembe.fr/definition-apple-ios.html" class="glossaire">iOS</a>
-			var db_content = p_content
-			if (typeof db_content!="object")
-			    eval('db_content = '+db_content);
-			printList(db_content);
-		    }
- 
-		function printList(p_db_content) {
-			listvaleur = '';
-			for (var f=0;f<p_db_content.length;f++) {
-			   listvaleur += p_db_content[f].humeur+' '+p_db_content[f].timestamp;
-		    
-			}
-			$('#retour_ajax_load').html(listvaleur);
-		}
-
-		
-	</script>
+	
 	
 	
 </body>
