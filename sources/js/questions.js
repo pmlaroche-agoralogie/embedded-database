@@ -74,4 +74,84 @@ function chercheid() {
 			$('#retour_ajax_load').html(listvaleur);
 		}
                 
+function date_heure()
+{
+        date = new Date;
+        annee = date.getFullYear();
+        moi = date.getMonth();
+        mois = new Array('Janvier', 'F&eacute;vrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Ao&ucirc;t', 'Septembre', 'Octobre', 'Novembre', 'D&eacute;cembre');
+        j = date.getDate();
+        jour = date.getDay();
+        jours = new Array('Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi');
+        h = date.getHours();
+        if(h<10)
+        {
+                h = "0"+h;
+        }
+        m = date.getMinutes();
+        if(m<10)
+        {
+                m = "0"+m;
+        }
+        s = date.getSeconds();
+        if(s<10)
+        {
+                s = "0"+s;
+        }
+        resultat = 'Nous sommes le '+jours[jour]+' '+j+' '+mois[moi]+' '+annee+' il est '+h+':'+m+':'+s;
+        
+        
+        $('#champs_chrono').html(resultat);
+        //document.getElementById(id).innerHTML = resultat;
+        
+        return true;
+}
+
+function teste_questionnaire()
+{
+    date_heure();
+    mon_ts=quelleheureestil();
+    requete_programme = 'select * from programme where tsprevu <'+mon_ts.toString();
+    alert(requete_programme);
+    db.execute({
+				sql:requete_programme,
+				onSuccess: getList
+			});
+    setTimeout('teste_questionnaire();','15000');
+}
+
+function resetAll() {
+			
+			$('#is_ready').html('');
+			$('#nb_insert').html('');
+			$('#retour_ajax_load').html('');
+			
+		}
+		
+		function LoadBase() {
+			db.execute({
+				sql:'select * from humeur',
+				onSuccess: getList
+			});
+		
+		}
+		
+		function getList(p_content) {
+			//p_content est un object sous <a href="http://www.jembe.fr/definition-android.html" class="glossaire">android</a> mais une chaine de caractère sur <a href="http://www.jembe.fr/definition-apple-ios.html" class="glossaire">iOS</a>
+			var db_content = p_content
+			if (typeof db_content!="object")
+			    eval('db_content = '+db_content);
+			printList(db_content);
+		    }
+ 
+		function printList(p_db_content) {
+			listvaleur = '';
+			for (var f=0;f<p_db_content.length;f++) {
+			   listvaleur += p_db_content[f].humeur+'-'+p_db_content[f].ts_debut.toString();
+		    
+			}
+			$('#retour_ajax_load').html(listvaleur);
+		}
+
+		
                 
