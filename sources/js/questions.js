@@ -21,6 +21,7 @@ function getCookie(name)
 {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
+    alert("cook:"+document.cookie);
     for(var i=0;i < ca.length;i++) {
     var c = ca[i].trim();
     if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
@@ -45,17 +46,12 @@ function questionnaire(nomquestionnaire) {
 }
 
 
-function reglages() {
-   window.location.href="reglages.html";
-}
-function finreglages() {
-   window.location.href="index.html";
-}
 
 function validerquestions() {
     
     valeurslider1 = document.getElementById("slider1").value;
-    document.cookie="username="+valeurslider1.toString()  +';expires=Thu, 18 Dec 2020 12:00:00 GMT; path=/"'; 
+    document.cookie="username="+valeurslider1.toString()  ;
+    alert(valeurslider1.toString());
     db.execute({
 				sql:'select * from reglage where parametre = \'uniqueid\' ',
 				onSuccess: getListId
@@ -187,6 +183,15 @@ function manageNextQuestionnaire(p_db_content) {
     
         }
         $('#retour_ajax_load').html(listvaleur);
+}
+
+
+//navigation
+function reglages() {
+   window.location.href="reglages.html";
+}
+function finreglages() {
+   window.location.href="index.html";
 }
 
 		
