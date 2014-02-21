@@ -26,19 +26,6 @@
 </head>
 <body>
 	
-	
-
-
-
-	<script>
-	
-
-	var fname=getCookie("username");
-alert(fname);
-	
-    </script>
-	
-	
 	<div data-role="page" id="page1">
 		<div data-theme="a" data-role="header">
 			<h3>Questions d'humeurs Mobile
@@ -51,24 +38,40 @@ alert(fname);
 				<tr>
 					<td>
 						<a data-role="button" data-transition="fade" href="javascript:" onclick="chercheid()">Affiche base</a>
-						<div id="retour_ajax_load"></div>
+						<div id="detail_reglages"></div>
 					</td>
 				</tr>
-				<tr>
-					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="resetAll()">Reset All</a></td>
+				
+			</table>
+		</div>
+		<form>
+Protocole: <input type="text" name="protocolname"><br>
+Code débloquage: <input type="text" name="code">
+</form>
+		<table width="100%" cellpadding="2" cellspacing="2" border="0" >
+				
+				
+					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="resetAll()">Charger protocole</a></td>
 				</tr>
 				<tr>
-					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="resetAll()">Réglage</a></td>
+					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="finreglages()">Retour</a></td>
 				</tr>
 			</table>
 		</div>
+	
 		<div data-theme="a" data-role="footer">
-			<h3>copyright jeMbe 2012-13-14 </h3>
+			<h3>copyright Agoralogie 2014 </h3>
 		</div>
 	</div>
 	<script>
 	
+	<script>
 	
+
+	var fname=getCookie("username");
+alert(fname);
+	
+    </script>
 	
 </body>
 </html>

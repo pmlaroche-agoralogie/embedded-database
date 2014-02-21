@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
 	teste_questionnaire('');
+        alert(window.location.href);
 });
 
 
@@ -47,6 +48,9 @@ function questionnaire(nomquestionnaire) {
 function reglages() {
    window.location.href="reglages.html";
 }
+function finreglages() {
+   window.location.href="index.html";
+}
 
 function validerquestions() {
     
@@ -82,7 +86,7 @@ function chercheid() {
 			   listvaleur += p_db_content[f].parametre+' '+p_db_content[f].valeur;
 		    
 			}
-			$('#retour_ajax_load').html(listvaleur);
+			$('#detail_reglages').html(listvaleur);
 		}
                 
 function date_heure()
