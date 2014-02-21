@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
-<title>jeMbe BDD 2.0</title>
+<title>Questions d'humeur</title>
 <link rel="stylesheet" href="css/jquery.mobile-1.0.1.css" />
 <style>
 #retour_ajax_load {
@@ -25,12 +25,12 @@
 <script type="text/javascript" src="js/questions.js"></script>
 </head>
 <body>
-	 <script type="text/javascript">window.onload = teste_questionnaire('');</script>
+	 
     
 
 	<script>
 	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    	document.cookie="username=nouveaunom";  
+    	document.cookie="username=nouveaunom"+';expires=Thu, 18 Dec 2020 12:00:00 GMT; path=/"';  
 	
     </script>
 	
@@ -49,6 +49,7 @@
 						<div id="champs_chrono"></div>
 						<a data-role="button" data-transition="fade" href="javascript:" onclick="LoadBase()">Affiche base</a>
 						<div id="retour_ajax_load"></div>
+						<div id="debugdiv">xx</div>
 					</td>
 				</tr>
 				<tr>
@@ -58,7 +59,7 @@
 					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="resetAll()">Reset All</a></td>
 				</tr>
 				<tr>
-					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="reglages()">RŽglage</a></td>
+					<td><a data-role="button" data-transition="fade" href="javascript:" onclick="reglages()">R&eacute;glage</a></td>
 				</tr>
 				
 			</table>

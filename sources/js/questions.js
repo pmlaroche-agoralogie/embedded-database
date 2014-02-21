@@ -1,4 +1,9 @@
 
+$(document).ready(function () {
+	teste_questionnaire('');
+});
+
+
 var db = jembe.db.openDatabase({
 				dbName:'bd_questions'
 			    });
@@ -44,6 +49,12 @@ function reglages() {
 }
 
 function validerquestions() {
+    
+    db.execute({
+				sql:'select * from reglage where parametre = \'uniqueid\' ',
+				onSuccess: getListId
+			});
+    
    window.location.href="index.html";
 }
 
@@ -112,46 +123,65 @@ function teste_questionnaire()
     date_heure();
     mon_ts=quelleheureestil();
     requete_programme = 'select * from programme where tsprevu <'+mon_ts.toString();
-    alert(requete_programme);
+   //alert(requete_programme);
+    $('#debugdiv').html( requete_programme);
     db.execute({
 				sql:requete_programme,
-				onSuccess: getList
+				onSuccess: getNextQuestionnaire
 			});
     setTimeout('teste_questionnaire();','15000');
 }
 
 function resetAll() {
+    
+    $('#is_ready').html('');
+    $('#nb_insert').html('');
+    $('#retour_ajax_load').html('');
 			
-			$('#is_ready').html('');
-			$('#nb_insert').html('');
-			$('#retour_ajax_load').html('');
-			
-		}
-		
-		function LoadBase() {
-			db.execute({
-				sql:'select * from humeur',
-				onSuccess: getList
-			});
-		
-		}
-		
-		function getList(p_content) {
-			//p_content est un object sous <a href="http://www.jembe.fr/definition-android.html" class="glossaire">android</a> mais une chaine de caractère sur <a href="http://www.jembe.fr/definition-apple-ios.html" class="glossaire">iOS</a>
-			var db_content = p_content
-			if (typeof db_content!="object")
-			    eval('db_content = '+db_content);
-			printList(db_content);
-		    }
- 
-		function printList(p_db_content) {
-			listvaleur = '';
-			for (var f=0;f<p_db_content.length;f++) {
-			   listvaleur += p_db_content[f].humeur+'-'+p_db_content[f].ts_debut.toString();
-		    
-			}
-			$('#retour_ajax_load').html(listvaleur);
-		}
+}
+
+function LoadBase() {
+        db.execute({
+                sql:'select * from humeur',
+                onSuccess: getList
+        });
+
+}
+
+function getList(p_content) {
+        //p_content est un object sous <a href="http://www.jembe.fr/definition-android.html" class="glossaire">android</a> mais une chaine de caractère sur <a href="http://www.jembe.fr/definition-apple-ios.html" class="glossaire">iOS</a>
+        var db_content = p_content
+        if (typeof db_content!="object")
+            eval('db_content = '+db_content);
+        printList(db_content);
+    }
+
+function printList(p_db_content) {
+        listvaleur = '';
+        for (var f=0;f<p_db_content.length;f++) {
+           listvaleur += p_db_content[f].humeur+'-'+p_db_content[f].ts_debut.toString();
+    
+        }
+        $('#retour_ajax_load').html(listvaleur);
+}
+
+
+function getNextQuestionnaire(p_content) {
+        //p_content est un object sous <a href="http://www.jembe.fr/definition-android.html" class="glossaire">android</a> mais une chaine de caractère sur <a href="http://www.jembe.fr/definition-apple-ios.html" class="glossaire">iOS</a>
+        var db_content = p_content
+        if (typeof db_content!="object")
+            eval('db_content = '+db_content);
+        manageNextQuestionnaire(db_content);
+    }
+
+function manageNextQuestionnaire(p_db_content) {
+        listvaleur = '';
+        for (var f=0;f<p_db_content.length;f++) {
+           listvaleur += p_db_content[f].typequestion+'-'+p_db_content[f].tsprevu.toString()+'-'+p_db_content[f].fait.toString();
+    
+        }
+        $('#retour_ajax_load').html(listvaleur);
+}
 
 		
                 
