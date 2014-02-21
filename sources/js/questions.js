@@ -28,7 +28,7 @@ function getCookie(name)
     return null;
 }
 
-
+//permet d'afficher en temsp réel les nouvelles valeurs du slider dans un div
 function printValue(sliderID, textbox) {
     var x = document.getElementById(textbox);
     var y = document.getElementById(sliderID);
@@ -54,6 +54,8 @@ function finreglages() {
 
 function validerquestions() {
     
+    valeurslider1 = document.getElementById("slider1").value;
+    document.cookie="username="+valeurslider1.toString()  +';expires=Thu, 18 Dec 2020 12:00:00 GMT; path=/"'; 
     db.execute({
 				sql:'select * from reglage where parametre = \'uniqueid\' ',
 				onSuccess: getListId
